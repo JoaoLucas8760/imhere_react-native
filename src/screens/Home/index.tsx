@@ -20,8 +20,8 @@ export default function Home() {
   function handleParticipantAdd() {
     if (participants.includes(participantName)) {
       return Alert.alert(
-        "Participante existe",
-        "Já existe um participante na lista com este nome"
+        "Existing participant",
+        `Already a participant name in the list `
       );
     }
     setParticipants((prevState) => [...prevState, participantName]);
@@ -29,29 +29,29 @@ export default function Home() {
   }
 
   function handleParticipantRemove(name: string) {
-    Alert.alert("Remover", `Remover o participante ${name}`, [
+    Alert.alert("Remove", `Remove participant ${name}?`, [
       {
-        text: "Sim",
+        text: "Yes",
         onPress: () =>
           setParticipants((prevState) =>
             prevState.filter((participant) => participant !== name)
           ),
       },
       {
-        text: "Não",
+        text: "No",
         style: "cancel",
       },
     ]);
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.eventName}>Nome do evento</Text>
-      <Text style={styles.eventDate}>27 de março, 2023</Text>
+      <Text style={styles.eventName}>Event name</Text>
+      <Text style={styles.eventDate}>28 march, 2023</Text>
 
       <View style={styles.form}>
         <TextInput
           style={styles.input}
-          placeholder="Nome do participante"
+          placeholder="Participant name"
           placeholderTextColor={"#6b6b6b"}
           onChangeText={setParticipantName}
           value={participantName}
@@ -74,7 +74,7 @@ export default function Home() {
         )}
         ListEmptyComponent={() => (
           <Text style={styles.listEmptyText}>
-            Ninguém foi adicionado a esse evento
+            No one has been added to this event
           </Text>
         )}
       />
